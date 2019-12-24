@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Authentification callback processing..</title>
+</head>
+
+<body>
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+
+    <h1>Authentification callback processing...</h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client/1.8.2/oidc-client.js"></script>
+    <script>
+        new Oidc.UserManager({ response_mode: "query" }).signinRedirectCallback().then(function (user) {
+            localStorage.setItem("user", JSON.stringify(user));
+            window.location.href = "http://localhost:8082";
+        }).catch(function (e) {
+            console.error(e);
+        });
+
+        // new Oidc.UserManager({ response_mode: "query" }).signoutRedirectCallback().then(function () {
+        //     window.location.href = "http://localhost:8082";
+        // }).catch(function (e) {
+        //     console.error(e);
+        // });
+    </script>
+
+</body>
+
+</html>
